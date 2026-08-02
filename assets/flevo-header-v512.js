@@ -38,12 +38,6 @@
   function setScrolled(){header.classList.toggle('is-scrolled',scrollY>24)}
   addEventListener('scroll',setScrolled,{passive:true});setScrolled();
 
-  // navigation-audit.js owns the mobile menu when present. Fallback keeps this component standalone.
-  if(toggle&&nav&&!toggle.dataset.flevoBound){
-    toggle.addEventListener('click',()=>{const open=!nav.classList.contains('open');nav.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));toggle.querySelector('span').textContent=open?'×':'☰'});
-    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(media.matches){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.querySelector('span').textContent='☰'}}));
-  }
-
   // Correct active state by page first, then by visible section on home.
   const links=[...nav.querySelectorAll('a[data-nav-key]')];
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
