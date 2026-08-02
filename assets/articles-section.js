@@ -16,8 +16,8 @@
   }
   function render(list){
     var grid=document.getElementById('homeArticlesGrid');if(!grid)return;
-    cache=list;var en=lang()==='en';
-    grid.innerHTML=list.slice(0,3).map(a=>`<article class="article-card">
+    cache=list;var en=lang()==='en';var limit=grid.dataset.limit==='all'?list.length:3;
+    grid.innerHTML=list.slice(0,limit).map(a=>`<article class="article-card">
       <div class="article-card-body">
         <div class="article-number">${a.number}</div>
         <h3>${en?a.titleEn:a.titleAr}</h3>

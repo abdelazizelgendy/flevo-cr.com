@@ -2,10 +2,12 @@ const CACHE = 'flevo-v5.12';
 const STATIC = [
   './', './index.html', './projects.html', './gallery.html',
   './articles.html', './profile.html',
-  './assets/flevo-app.css', './assets/site.css', './assets/motion.css',
-  './assets/flevo-header-v512.css', './assets/unified-auth.css',
-  './assets/flevo-header-v512.js', './assets/motion.js',
-  './assets/quote.js', './assets/i18n.js',
+  './assets/flevo-app.css?v=5.12', './assets/site.css?v=5.12',
+  './assets/motion.css?v=5.12', './assets/flevo-header-v512.css?v=5.12',
+  './assets/unified-auth.css?v=5.12',
+  './assets/flevo-header-v512.js?v=5.12', './assets/motion.js?v=5.12',
+  './assets/quote.js?v=5.12', './assets/quote.css?v=5.12',
+  './assets/i18n.js?v=5.12',
   './assets/flevo-logo-on-dark.png', './manifest.webmanifest'
 ];
 

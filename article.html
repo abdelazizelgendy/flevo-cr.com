@@ -40,4 +40,37 @@
 <a data-fh-ar="المقالات" data-fh-en="Articles" data-search-label="articles مقالات" href="articles.html">المقالات</a>
 <a data-fh-ar="تواصل معنا" data-fh-en="Contact Us" data-search-label="contact تواصل" href="index.html#contact">تواصل معنا</a>
 </div>
-</div><header class="article-hero" id="articleHero"><a class="back" href="articles.html">← المقالات</a><div class="article-hero-inner"><div id="articleCategory"></div><h1 id="articleTitle"></h1><div class="article-meta" id="articleMeta"></div></div></header><article class="article-body" id="articleBody"></article><script src="assets/articles-data.js?v=5.12"></script><script>(function(){const id=new URLSearchParams(location.search).get('id');const a=(window.FLEVO_ARTICLES||[]).find(x=>x.id===id)||window.FLEVO_ARTICLES[0];document.title=a.titleAr+' | FLEVO';articleHero.style.backgroundImage=`url('${a.image}')`;articleCategory.textContent=a.categoryAr;articleTitle.textContent=a.titleAr;articleMeta.textContent=a.dateAr;articleBody.innerHTML=`<p>${a.excerptAr}</p><h2>لماذا هذا الموضوع مهم؟</h2><p>نجاح أي مشروع معرض أو فعالية يبدأ من وضوح الهدف، ثم ترجمة هذا الهدف إلى تجربة بصرية قابلة للتنفيذ، مع مراجعة دقيقة للجودة والوقت والتكلفة.</p><h2>منهج FLEVO</h2><p>نعتمد على تكامل فرق التصميم والهندسة والتصنيع والتنفيذ، مع نقاط مراجعة واضحة في كل مرحلة، حتى يصل المشروع إلى الموقع جاهزًا للتجميع والتشغيل بأعلى مستوى ممكن.</p><h2>الخلاصة</h2><p>التفاصيل الصغيرة تصنع الفارق الكبير. لذلك نربط كل قرار تصميمي بهدف عملي وتجربة مستخدم واضحة وهوية بصرية متماسكة.</p>`})();</script><script src="assets/i18n.js?v=5.12"></script><script defer="" src="assets/navigation-audit.js?v=5.12"></script><script defer="" src="assets/flevo-header-v512.js?v=5.12"></script></body></html>
+</div><header class="article-hero" id="articleHero"><a class="back" href="articles.html">← المقالات</a><div class="article-hero-inner"><div id="articleCategory"></div><h1 id="articleTitle"></h1><div class="article-meta" id="articleMeta"></div></div></header><article class="article-body" id="articleBody"></article><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/supabase-config.js?v=5.12"></script><script src="assets/data-store.js?v=5.12"></script><script src="assets/articles-data.js?v=5.12"></script><script>(function(){
+  const FALLBACK_BODY='<h2>لماذا هذا الموضوع مهم؟</h2><p>نجاح أي مشروع معرض أو فعالية يبدأ من وضوح الهدف، ثم ترجمة هذا الهدف إلى تجربة بصرية قابلة للتنفيذ، مع مراجعة دقيقة للجودة والوقت والتكلفة.</p><h2>منهج FLEVO</h2><p>نعتمد على تكامل فرق التصميم والهندسة والتصنيع والتنفيذ، مع نقاط مراجعة واضحة في كل مرحلة، حتى يصل المشروع إلى الموقع جاهزًا للتجميع والتشغيل بأعلى مستوى ممكن.</p><h2>الخلاصة</h2><p>التفاصيل الصغيرة تصنع الفارق الكبير. لذلك نربط كل قرار تصميمي بهدف عملي وتجربة مستخدم واضحة وهوية بصرية متماسكة.</p>';
+  function fmtDate(iso){try{return new Intl.DateTimeFormat('ar-EG',{day:'numeric',month:'long',year:'numeric'}).format(new Date(iso))}catch{return ''}}
+  function renderRow(r){
+    document.title=r.title_ar+' | FLEVO';
+    articleHero.style.backgroundImage=`url('${r.image_url||''}')`;
+    articleCategory.textContent=r.category_ar||'';
+    articleTitle.textContent=r.title_ar;
+    articleMeta.textContent=r.created_at?fmtDate(r.created_at):'';
+    articleBody.innerHTML='<p>'+(r.excerpt_ar||'')+'</p>'+(r.content_ar?'<p>'+r.content_ar+'</p>':FALLBACK_BODY);
+  }
+  function renderLocal(a){
+    document.title=a.titleAr+' | FLEVO';
+    articleHero.style.backgroundImage=`url('${a.image}')`;
+    articleCategory.textContent=a.categoryAr;
+    articleTitle.textContent=a.titleAr;
+    articleMeta.textContent=a.dateAr;
+    articleBody.innerHTML='<p>'+a.excerptAr+'</p>'+FALLBACK_BODY;
+  }
+  async function init(){
+    const id=new URLSearchParams(location.search).get('id');
+    if(window.FlevoStore&&window.FlevoStore.getArticles){
+      try{
+        const rows=await FlevoStore.getArticles();
+        const row=id?rows.find(r=>(r.slug||r.id)===id):rows[0];
+        if(row){renderRow(row);return;}
+      }catch(e){}
+    }
+    const local=window.FLEVO_ARTICLES||[];
+    const a=(id?local.find(x=>x.id===id):null)||local[0];
+    if(a)renderLocal(a);
+  }
+  init();
+})();</script><script src="assets/i18n.js?v=5.12"></script><script defer="" src="assets/navigation-audit.js?v=5.12"></script><script defer="" src="assets/flevo-header-v512.js?v=5.12"></script></body></html>
