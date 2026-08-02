@@ -40,7 +40,7 @@ function init(){
   modal.querySelector('.quote-close').onclick=close;
   modal.onclick=e=>{if(e.target===modal)close();};
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close();});
-  document.addEventListener('flevo-language-change',translate);
+  document.addEventListener('flevo:language',translate);
 
   form.onsubmit=async e=>{
     e.preventDefault();

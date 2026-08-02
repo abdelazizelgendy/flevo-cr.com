@@ -41,24 +41,34 @@
 <a data-fh-ar="تواصل معنا" data-fh-en="Contact Us" data-search-label="contact تواصل" href="index.html#contact">تواصل معنا</a>
 </div>
 </div><header class="article-hero" id="articleHero"><a class="back" href="articles.html">← المقالات</a><div class="article-hero-inner"><div id="articleCategory"></div><h1 id="articleTitle"></h1><div class="article-meta" id="articleMeta"></div></div></header><article class="article-body" id="articleBody"></article><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/supabase-config.js?v=5.12"></script><script src="assets/data-store.js?v=5.12"></script><script src="assets/articles-data.js?v=5.12"></script><script>(function(){
-  const FALLBACK_BODY='<h2>لماذا هذا الموضوع مهم؟</h2><p>نجاح أي مشروع معرض أو فعالية يبدأ من وضوح الهدف، ثم ترجمة هذا الهدف إلى تجربة بصرية قابلة للتنفيذ، مع مراجعة دقيقة للجودة والوقت والتكلفة.</p><h2>منهج FLEVO</h2><p>نعتمد على تكامل فرق التصميم والهندسة والتصنيع والتنفيذ، مع نقاط مراجعة واضحة في كل مرحلة، حتى يصل المشروع إلى الموقع جاهزًا للتجميع والتشغيل بأعلى مستوى ممكن.</p><h2>الخلاصة</h2><p>التفاصيل الصغيرة تصنع الفارق الكبير. لذلك نربط كل قرار تصميمي بهدف عملي وتجربة مستخدم واضحة وهوية بصرية متماسكة.</p>';
-  function fmtDate(iso){try{return new Intl.DateTimeFormat('ar-EG',{day:'numeric',month:'long',year:'numeric'}).format(new Date(iso))}catch{return ''}}
+  const FALLBACK_BODY_AR='<h2>لماذا هذا الموضوع مهم؟</h2><p>نجاح أي مشروع معرض أو فعالية يبدأ من وضوح الهدف، ثم ترجمة هذا الهدف إلى تجربة بصرية قابلة للتنفيذ، مع مراجعة دقيقة للجودة والوقت والتكلفة.</p><h2>منهج FLEVO</h2><p>نعتمد على تكامل فرق التصميم والهندسة والتصنيع والتنفيذ، مع نقاط مراجعة واضحة في كل مرحلة، حتى يصل المشروع إلى الموقع جاهزًا للتجميع والتشغيل بأعلى مستوى ممكن.</p><h2>الخلاصة</h2><p>التفاصيل الصغيرة تصنع الفارق الكبير. لذلك نربط كل قرار تصميمي بهدف عملي وتجربة مستخدم واضحة وهوية بصرية متماسكة.</p>';
+  const FALLBACK_BODY_EN='<h2>Why Does This Matter?</h2><p>The success of any exhibition or event project starts with a clear objective, then translating that objective into an executable visual experience with careful attention to quality, timing and cost.</p><h2>The FLEVO Approach</h2><p>We rely on the integration of design, engineering, fabrication and installation teams, with clear review checkpoints at each stage, so the project arrives on site ready for assembly and launch at the highest possible level.</p><h2>Conclusion</h2><p>Small details make a big difference. That is why we connect every design decision to a practical goal, a clear user experience and a coherent visual identity.</p>';
+  function lang(){return localStorage.getItem('flevo_lang')||'ar'}
+  function fmtDate(iso,l){try{return new Intl.DateTimeFormat(l==='en'?'en-US':'ar-EG',{day:'numeric',month:'long',year:'numeric'}).format(new Date(iso))}catch{return ''}}
+  var currentRow=null,currentLocal=null;
   function renderRow(r){
-    document.title=r.title_ar+' | FLEVO';
-    articleHero.style.backgroundImage=`url('${r.image_url||''}')`;
-    articleCategory.textContent=r.category_ar||'';
-    articleTitle.textContent=r.title_ar;
-    articleMeta.textContent=r.created_at?fmtDate(r.created_at):'';
-    articleBody.innerHTML='<p>'+(r.excerpt_ar||'')+'</p>'+(r.content_ar?'<p>'+r.content_ar+'</p>':FALLBACK_BODY);
+    currentRow=r;const en=lang()==='en';
+    document.title=(en?(r.title_en||r.title_ar):r.title_ar)+' | FLEVO';
+    articleHero.style.backgroundImage=r.image_url?`url('${r.image_url}')`:'';
+    articleCategory.textContent=en?(r.category_en||r.category_ar||''):(r.category_ar||'');
+    articleTitle.textContent=en?(r.title_en||r.title_ar):r.title_ar;
+    articleMeta.textContent=r.created_at?fmtDate(r.created_at,lang()):'';
+    const excerpt=en?(r.excerpt_en||r.excerpt_ar||''):(r.excerpt_ar||'');
+    const content=en?(r.content_en||r.content_ar):(r.content_ar);
+    const fallback=en?FALLBACK_BODY_EN:FALLBACK_BODY_AR;
+    articleBody.innerHTML='<p>'+excerpt+'</p>'+(content?'<p>'+content+'</p>':fallback);
   }
   function renderLocal(a){
-    document.title=a.titleAr+' | FLEVO';
+    currentLocal=a;const en=lang()==='en';
+    document.title=(en?a.titleEn:a.titleAr)+' | FLEVO';
     articleHero.style.backgroundImage=`url('${a.image}')`;
-    articleCategory.textContent=a.categoryAr;
-    articleTitle.textContent=a.titleAr;
-    articleMeta.textContent=a.dateAr;
-    articleBody.innerHTML='<p>'+a.excerptAr+'</p>'+FALLBACK_BODY;
+    articleCategory.textContent=en?a.categoryEn:a.categoryAr;
+    articleTitle.textContent=en?a.titleEn:a.titleAr;
+    articleMeta.textContent=en?a.dateEn:a.dateAr;
+    const fallback=en?FALLBACK_BODY_EN:FALLBACK_BODY_AR;
+    articleBody.innerHTML='<p>'+(en?a.excerptEn:a.excerptAr)+'</p>'+fallback;
   }
+  document.addEventListener('flevo:language',()=>{if(currentRow)renderRow(currentRow);else if(currentLocal)renderLocal(currentLocal)});
   async function init(){
     const id=new URLSearchParams(location.search).get('id');
     if(window.FlevoStore&&window.FlevoStore.getArticles){
