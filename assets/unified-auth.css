@@ -1,0 +1,332 @@
+/* FLEVO v5.7 — Unified Supabase Login Card */
+:root {
+  --flevo-auth-navy: #071b31;
+  --flevo-auth-navy-2: #0b2944;
+  --flevo-auth-teal: #13b7bd;
+  --flevo-auth-teal-dark: #0a8e94;
+  --flevo-auth-text: #122033;
+  --flevo-auth-muted: #6b7d8a;
+  --flevo-auth-line: #d8e3ea;
+  --flevo-auth-danger: #b83245;
+}
+
+/* Isolate the unified login from broad website selectors such as header, img and button. */
+#flevoUnifiedAuth,
+#flevoUnifiedAuth *,
+#flevoUnifiedAuth *::before,
+#flevoUnifiedAuth *::after {
+  box-sizing: border-box;
+}
+
+#flevoUnifiedAuth .flevo-auth-brand {
+  position: relative !important;
+  inset: auto !important;
+  z-index: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+}
+
+.flevo-auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(19, 183, 189, .24), transparent 34%),
+    linear-gradient(145deg, rgba(7, 27, 49, .97), rgba(3, 15, 28, .985));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.flevo-auth-overlay.is-open {
+  display: flex;
+}
+
+.flevo-auth-card {
+  width: min(100%, 430px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 34px 100px rgba(0, 0, 0, .45);
+  animation: flevoAuthEnter .22s ease-out;
+}
+
+@keyframes flevoAuthEnter {
+  from { opacity: 0; transform: translateY(13px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.flevo-auth-brand {
+  position: relative;
+  min-height: 168px;
+  display: grid;
+  place-items: center;
+  padding: 31px 28px 29px;
+  color: #fff;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(19, 183, 189, .18), transparent 58%),
+    var(--flevo-auth-navy);
+}
+
+.flevo-auth-brand::after {
+  content: "";
+  position: absolute;
+  right: 28px;
+  bottom: 0;
+  left: 28px;
+  height: 3px;
+  border-radius: 999px 999px 0 0;
+  background: var(--flevo-auth-teal);
+}
+
+.flevo-auth-brand img {
+  display: block;
+  width: min(245px, 78%);
+  max-height: 86px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.18));
+}
+
+.flevo-auth-close {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, .08);
+  font: 700 23px/1 Arial, sans-serif;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+html[dir="ltr"] .flevo-auth-close {
+  right: 14px;
+  left: auto;
+}
+
+.flevo-auth-close:hover {
+  background: rgba(255, 255, 255, .15);
+  transform: rotate(4deg);
+}
+
+.flevo-auth-body {
+  padding: 27px 28px 29px;
+}
+
+.flevo-auth-title {
+  margin: 0 0 6px;
+  color: var(--flevo-auth-text);
+  font-size: 23px;
+  line-height: 1.35;
+}
+
+.flevo-auth-subtitle {
+  margin: 0 0 21px;
+  color: var(--flevo-auth-muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.flevo-auth-field {
+  margin-bottom: 15px;
+}
+
+.flevo-auth-field label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--flevo-auth-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.flevo-auth-input-wrap {
+  position: relative;
+}
+
+.flevo-auth-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 49px;
+  padding: 0 44px 0 14px;
+  border: 1px solid var(--flevo-auth-line);
+  border-radius: 13px;
+  outline: none;
+  color: var(--flevo-auth-text);
+  background: #fbfcfd;
+  font: inherit;
+  font-size: 15px;
+  transition: .18s ease;
+}
+
+html[dir="ltr"] .flevo-auth-input {
+  padding: 0 14px 0 44px;
+}
+
+.flevo-auth-input:focus {
+  border-color: var(--flevo-auth-teal);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(19, 183, 189, .12);
+}
+
+.flevo-auth-field-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #8797a2;
+  pointer-events: none;
+  font-size: 16px;
+}
+
+html[dir="ltr"] .flevo-auth-field-icon {
+  right: auto;
+  left: 15px;
+}
+
+.flevo-auth-password-toggle {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 35px;
+  height: 35px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 9px;
+  color: #667986;
+  background: transparent;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+html[dir="ltr"] .flevo-auth-password-toggle {
+  right: 10px;
+  left: auto;
+}
+
+.flevo-auth-message {
+  display: none;
+  margin: 0 0 15px;
+  padding: 10px 12px;
+  border-radius: 11px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.flevo-auth-message.is-open {
+  display: block;
+}
+
+.flevo-auth-message.error {
+  border: 1px solid rgba(184, 50, 69, .18);
+  color: var(--flevo-auth-danger);
+  background: rgba(184, 50, 69, .07);
+}
+
+.flevo-auth-message.success {
+  border: 1px solid rgba(10, 142, 148, .2);
+  color: #08747a;
+  background: rgba(19, 183, 189, .09);
+}
+
+.flevo-auth-submit {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 13px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--flevo-auth-teal), var(--flevo-auth-teal-dark));
+  box-shadow: 0 13px 30px rgba(19, 183, 189, .24);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.flevo-auth-submit:hover {
+  transform: translateY(-1px);
+}
+
+.flevo-auth-submit:disabled {
+  opacity: .67;
+  cursor: wait;
+  transform: none;
+}
+
+.flevo-auth-spinner {
+  width: 18px;
+  height: 18px;
+  display: none;
+  border: 2px solid rgba(255,255,255,.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: flevoAuthSpin .72s linear infinite;
+}
+
+.flevo-auth-submit.is-loading .flevo-auth-spinner {
+  display: block;
+}
+
+@keyframes flevoAuthSpin {
+  to { transform: rotate(360deg); }
+}
+
+.flevo-auth-footer {
+  margin-top: 17px;
+  color: #91a0aa;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+html.flevo-auth-locked,
+html.flevo-auth-locked body {
+  overflow: hidden !important;
+}
+
+body[data-flevo-protected="true"]:not(.flevo-auth-ready) > header,
+body[data-flevo-protected="true"]:not(.flevo-auth-ready) > main {
+  visibility: hidden;
+}
+
+@media (max-width: 520px) {
+  .flevo-auth-overlay {
+    align-items: flex-end;
+    padding: 12px;
+  }
+
+  .flevo-auth-card {
+    width: 100%;
+    border-radius: 25px 25px 16px 16px;
+  }
+
+  .flevo-auth-brand {
+    min-height: 145px;
+    padding: 25px 22px 23px;
+  }
+
+  .flevo-auth-brand img {
+    width: min(225px, 78%);
+  }
+
+  .flevo-auth-body {
+    padding: 23px 20px 25px;
+  }
+}

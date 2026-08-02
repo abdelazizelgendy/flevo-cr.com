@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>تقرير التحليل التقني — FLEVO Creative Industries</title>
+<style>
+/* ── TOKEN LAYER ─────────────────────────────────────── */
+:root {
+  --navy:      #06182b;
+  --navy2:     #0c2540;
+  --navy3:     #112e50;
+  --teal:      #12b8bc;
+  --teal-dim:  #0d8f93;
+  --teal-glow: rgba(18,184,188,.18);
+  --white:     #f4f8fb;
+  --ink:       #e8f0f6;
+  --ink2:      #9ab8cc;
+  --ink3:      #6e93ac;
+  --line:      rgba(18,184,188,.22);
+  --card:      #0c2540;
+  --card2:     #102d4e;
+  --critical:  #e05252;
+  --warning:   #e09a30;
+  --good:      #2ab573;
+  --info:      #4d9de0;
+  --shadow:    0 8px 32px rgba(0,6,16,.45);
+  --r:         12px;
+  --bg:        #06182b;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --navy:    #f4f8fb;
+    --navy2:   #e7eff6;
+    --navy3:   #dceaf3;
+    --card:    #ffffff;
+    --card2:   #f0f6fa;
+    --ink:     #0d2035;
+    --ink2:    #3a5a72;
+    --ink3:    #6a8fa6;
+    --line:    rgba(12,140,145,.18);
+    --shadow:  0 4px 20px rgba(6,24,43,.10);
+    --bg:      #f4f8fb;
+    --teal-glow: rgba(18,184,188,.10);
+  }
+}
+:root[data-theme="light"] {
+  --navy:    #f4f8fb;
+  --navy2:   #e7eff6;
+  --navy3:   #dceaf3;
+  --card:    #ffffff;
+  --card2:   #f0f6fa;
+  --ink:     #0d2035;
+  --ink2:    #3a5a72;
+  --ink3:    #6a8fa6;
+  --line:    rgba(12,140,145,.18);
+  --shadow:  0 4px 20px rgba(6,24,43,.10);
+  --bg:      #f4f8fb;
+  --teal-glow: rgba(18,184,188,.10);
+}
+:root[data-theme="dark"] {
+  --navy:      #06182b;
+  --navy2:     #0c2540;
+  --navy3:     #112e50;
+  --card:      #0c2540;
+  --card2:     #102d4e;
+  --ink:       #e8f0f6;
+  --ink2:      #9ab8cc;
+  --ink3:      #6e93ac;
+  --line:      rgba(18,184,188,.22);
+  --shadow:    0 8px 32px rgba(0,6,16,.45);
+  --bg:        #06182b;
+  --teal-glow: rgba(18,184,188,.18);
+}
+
+/* ── RESET & BASE ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  font-family: -apple-system, 'Segoe UI', system-ui, 'Cairo', 'Tajawal', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+
+/* ── LAYOUT ──────────────────────────────────────────── */
+.wrap   { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 52px 0; }
+.section + .section { border-top: 1px solid var(--line); }
+
+/* ── HEADER ──────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(175deg, #041222 0%, #0a2238 100%);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 0 32px;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 90% 50%, rgba(18,184,188,.09) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(18,184,188,.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.header-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.brand-mark {
+  font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #fff;
+  line-height: 1;
+}
+.brand-mark em { font-style: normal; color: var(--teal); }
+.brand-sub {
+  font-size: 9px;
+  letter-spacing: 3.5px;
+  color: var(--ink3);
+  text-transform: uppercase;
+}
+.report-badge {
+  background: var(--teal-glow);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--teal);
+  font-weight: 700;
+  letter-spacing: .5px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+.header-title {
+  margin-top: 22px;
+}
+.header-title h1 {
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.header-title p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--ink2);
+  max-width: 520px;
+}
+.header-meta {
+  display: flex;
+  gap: 20px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  font-size: 12px;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.meta-chip span { color: var(--teal); font-weight: 700; }
+
+/* ── SCORE DASHBOARD ─────────────────────────────────── */
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 14px;
+  padding: 36px 0 0;
+}
+.score-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 22px 18px 18px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.score-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent-color, var(--teal));
+  border-radius: var(--r) var(--r) 0 0;
+}
+.score-ring {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: conic-gradient(
+    var(--accent-color, var(--teal)) 0% calc(var(--pct, 50) * 1%),
+    rgba(255,255,255,.07) calc(var(--pct, 50) * 1%) 100%
+  );
+}
+.score-ring::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  background: var(--card);
+  border-radius: 50%;
+}
+.score-ring .score-num {
+  position: relative;
+  z-index: 1;
+  font-size: 20px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  line-height: 1;
+}
+.score-ring .score-num sup { font-size: 11px; font-weight: 600; color: var(--ink3); }
+.score-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink2);
+  letter-spacing: .3px;
+}
+.score-note {
+  font-size: 11px;
+  color: var(--ink3);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* ── SECTION TITLES ──────────────────────────────────── */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.section-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--teal-glow);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.section-head h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.section-head p {
+  font-size: 13px;
+  color: var(--ink3);
+  margin-top: 3px;
+}
+
+/* ── STRENGTH CARDS ──────────────────────────────────── */
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.strength-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  box-shadow: var(--shadow);
+}
+.strength-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.strength-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.strength-card p {
+  font-size: 12.5px;
+  color: var(--ink3);
+  line-height: 1.65;
+}
+
+/* ── FINDING CARDS ───────────────────────────────────── */
+.category-block { margin-bottom: 32px; }
+.category-block:last-child { margin-bottom: 0; }
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.category-label h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: .3px;
+}
+.badge-critical { background: rgba(224,82,82,.15); color: var(--critical); border: 1px solid rgba(224,82,82,.3); }
+.badge-high     { background: rgba(224,154,48,.14); color: var(--warning);  border: 1px solid rgba(224,154,48,.3); }
+.badge-medium   { background: rgba(77,157,224,.12); color: var(--info);     border: 1px solid rgba(77,157,224,.28); }
+.badge-low      { background: rgba(42,181,115,.12); color: var(--good);     border: 1px solid rgba(42,181,115,.28); }
+
+.findings { display: flex; flex-direction: column; gap: 10px; }
+.finding {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  display: grid;
+  grid-template-columns: 4px 1fr;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.finding-rail { background: var(--rail-color, var(--teal)); }
+.finding-body { padding: 16px 18px; }
+.finding-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.finding-head h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.finding-body p {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+.code-block {
+  margin-top: 10px;
+  background: var(--navy2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+  color: var(--teal);
+  direction: ltr;
+  text-align: left;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+.finding-fix {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(42,181,115,.07);
+  border: 1px solid rgba(42,181,115,.2);
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: var(--good);
+  line-height: 1.65;
+}
+.finding-fix strong { font-weight: 700; display: block; margin-bottom: 3px; }
+
+/* ── ROADMAP ─────────────────────────────────────────── */
+.phases { display: flex; flex-direction: column; gap: 20px; }
+.phase {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.phase-header {
+  display: grid;
+  grid-template-columns: 5px 1fr;
+}
+.phase-rail { background: var(--phase-color, var(--teal)); }
+.phase-head-body {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: var(--card2);
+  border-bottom: 1px solid var(--line);
+}
+.phase-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--phase-color, var(--teal));
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.phase-head-body h3 { font-size: 15px; font-weight: 800; color: var(--ink); flex: 1; }
+.phase-timeline {
+  font-size: 12px;
+  color: var(--ink3);
+  font-weight: 600;
+  background: var(--teal-glow);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+.phase-items {
+  padding: 0;
+  list-style: none;
+}
+.phase-item {
+  padding: 12px 18px 12px 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+.phase-item:last-child { border-bottom: 0; }
+.phase-item-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--phase-color, var(--teal));
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.phase-item strong { color: var(--ink); font-weight: 700; }
+
+/* ── SUMMARY TABLE ───────────────────────────────────── */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.summary-table th {
+  text-align: right;
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  background: var(--card2);
+  border-bottom: 1px solid var(--line);
+}
+.summary-table th:last-child { text-align: center; }
+.summary-table td {
+  padding: 13px 14px;
+  color: var(--ink2);
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.summary-table tr:last-child td { border-bottom: 0; }
+.summary-table td:first-child { font-weight: 700; color: var(--ink); }
+.summary-table td:last-child { text-align: center; }
+.tbl-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; overflow-x: auto; box-shadow: var(--shadow); }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.site-footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+/* ── THEME TOGGLE ────────────────────────────────────── */
+.theme-toggle {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: .2s;
+  z-index: 50;
+}
+.theme-toggle:hover { border-color: var(--teal); background: var(--teal-glow); }
+
+/* ── TOC ─────────────────────────────────────────────── */
+.toc {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 20px 20px 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 36px;
+}
+.toc h3 { font-size: 13px; font-weight: 700; color: var(--ink3); letter-spacing: .5px; text-transform: uppercase; margin-bottom: 12px; }
+.toc-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  font-size: 13px;
+  color: var(--ink2);
+  padding: 5px 12px;
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-weight: 600;
+  transition: .18s;
+}
+.toc-list a:hover { color: var(--teal); border-color: var(--teal); text-decoration: none; background: var(--teal-glow); }
+
+/* ── MOTION ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .score-card, .finding, .strength-card, .phase {
+    animation: fade-up .4s ease both;
+  }
+  .score-card:nth-child(2) { animation-delay: .05s; }
+  .score-card:nth-child(3) { animation-delay: .10s; }
+  .score-card:nth-child(4) { animation-delay: .15s; }
+  .score-card:nth-child(5) { animation-delay: .20s; }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner { flex-direction: column; }
+  .scores-grid { grid-template-columns: repeat(2, 1fr); }
+  .strengths-grid { grid-template-columns: 1fr; }
+  .summary-table th:nth-child(3), .summary-table td:nth-child(3) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-mark">FLEV<em>O</em></div>
+        <span class="brand-sub">Creative Industries</span>
+      </div>
+      <div class="report-badge">تقرير تقني — v5.12</div>
+    </div>
+    <div class="header-title">
+      <h1>تحليل الموقع الإلكتروني: نقاط القوة والضعف وخطة التحسين</h1>
+      <p>فحص شامل للكود والأداء والأمان وتجربة المستخدم وتحسين محركات البحث عبر جميع ملفات الإصدار v5.12</p>
+    </div>
+    <div class="header-meta">
+      <div class="meta-chip">📁 الملفات <span>13 HTML · 13 CSS · 17 JS · 5 SQL</span></div>
+      <div class="meta-chip">🏗 المنصة <span>Vanilla JS + Supabase</span></div>
+      <div class="meta-chip">📅 التاريخ <span>أغسطس 2026</span></div>
+    </div>
+
+    <!-- SCORES -->
+    <div class="scores-grid">
+      <div class="score-card" style="--accent-color: var(--critical)">
+        <div class="score-ring" style="--pct: 50; --accent-color: var(--critical)">
+          <div class="score-num">5<sup>/10</sup></div>
+        </div>
+        <div class="score-label">الأمان</div>
+        <div class="score-note">مفتاح API مكشوف · لا يوجد CSP</div>
+      </div>
+      <div class="score-card" style="--accent-color: var(--warning)">
+        <div class="score-ring" style="--pct: 58; --accent-color: var(--warning)">
+          <div class="score-num">5.8<sup>/10</sup></div>
+        </div>
+        <div class="score-label">الأداء</div>
+        <div class="score-note">12 ملف CSS · لا يوجد bundling</div>
+      </div>
+      <div class="score-card" style="--accent-color: var(--critical)">
+        <div class="score-ring" style="--pct: 40; --accent-color: var(--critical)">
+          <div class="score-num">4<sup>/10</sup></div>
+        </div>
+        <div class="score-label">SEO</div>
+        <div class="score-note">لا يوجد OG · لا يوجد بيانات هيكلية</div>
+      </div>
+      <div class="score-card" style="--accent-color: var(--info)">
+        <div class="score-ring" style="--pct: 55; --accent-color: var(--info)">
+          <div class="score-num">5.5<sup>/10</sup></div>
+        </div>
+        <div class="score-label">جودة الكود</div>
+        <div class="score-note">تراكم CSS patches · تعارض breakpoints</div>
+      </div>
+      <div class="score-card" style="--accent-color: var(--good)">
+        <div class="score-ring" style="--pct: 72; --accent-color: var(--good)">
+          <div class="score-num">7.2<sup>/10</sup></div>
+        </div>
+        <div class="score-label">إمكانية الوصول</div>
+        <div class="score-note">ARIA جيد · مشكلات بسيطة</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+  <div class="wrap">
+
+    <!-- TOC -->
+    <div class="section" style="padding-bottom: 0;">
+      <div class="toc">
+        <h3>محتويات التقرير</h3>
+        <ul class="toc-list">
+          <li><a href="#strengths">✅ نقاط القوة</a></li>
+          <li><a href="#security">🔴 الأمان</a></li>
+          <li><a href="#performance">🟠 الأداء</a></li>
+          <li><a href="#seo">🔴 تحسين SEO</a></li>
+          <li><a href="#code-quality">🔵 جودة الكود</a></li>
+          <li><a href="#ux">🔵 تجربة المستخدم</a></li>
+          <li><a href="#roadmap">🗺 خطة التحسين</a></li>
+          <li><a href="#summary">📊 ملخص تنفيذي</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ████ STRENGTHS ████ -->
+    <section class="section" id="strengths">
+      <div class="section-head">
+        <div class="section-icon">✅</div>
+        <div>
+          <h2>نقاط القوة</h2>
+          <p>ما بُني بشكل صحيح ويستحق الإبقاء عليه وتعزيزه</p>
+        </div>
+      </div>
+      <div class="strengths-grid">
+        <div class="strength-card">
+          <div class="strength-icon">⚡</div>
+          <div>
+            <h3>معمارية خفيفة بدون Framework</h3>
+            <p>Vanilla JS خالص يعني تحميلاً أسرع وغياب تكلفة حزم React/Vue. قرار صحيح لموقع تسويقي.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">🗃</div>
+          <div>
+            <h3>تكامل Supabase محكم</h3>
+            <p>Auth، Realtime، Storage، وRLS — كل طبقة مستخدمة بشكل صحيح. الـ <code>withTimeout</code> والـ <code>client_request_id</code> تصميم استثنائي.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">♿</div>
+          <div>
+            <h3>إمكانية وصول جيدة</h3>
+            <p>aria-label، aria-live، role="dialog"، aria-modal، aria-expanded موجودة ومستخدمة بشكل صحيح في الهيدر ونموذج الاقتباس.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">🌐</div>
+          <div>
+            <h3>نظام i18n عربي/إنجليزي</h3>
+            <p>نظام ترجمة event-driven مدمج يدعم RTL/LTR مع تغيير فوري للغة وتذكر الإعداد في localStorage.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">📱</div>
+          <div>
+            <h3>تصميم متجاوب متقن</h3>
+            <p>5 breakpoints مُعرَّفة (430px، 620px، 680px، 980px، 1040px، 1240px) تغطي كل أحجام الشاشات.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">🎛</div>
+          <div>
+            <h3>لوحة إدارة متكاملة</h3>
+            <p>CRUD كامل للمشروعات مع رفع صور، حماية بالجلسة، تصدير JSON، وعرض عروض الأسعار في الوقت الفعلي.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">🍯</div>
+          <div>
+            <h3>Honeypot في نموذج الاقتباس</h3>
+            <p>حقل <code>qWebsite</code> مخفي يمنع الـ spam bots — تقنية بسيطة وفعالة بلا مكتبات خارجية.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">✨</div>
+          <div>
+            <h3>نظام حركة متطور</h3>
+            <p>View Transitions API، IntersectionObserver، شاشة تحميل أولية، وتأثيرات scroll reveal — تجربة visual premium.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">🔒</div>
+          <div>
+            <h3>robots.txt محكم</h3>
+            <p>صفحات الإدارة الخمس محظورة بشكل صريح من الفهرسة. Sitemap مُعلَن بشكل صحيح.</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">📲</div>
+          <div>
+            <h3>PWA مع Manifest</h3>
+            <p>manifest.webmanifest يتيح تثبيت الموقع كتطبيق مع theme-color وstart_url مضبوطين بشكل صحيح.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ████ SECURITY ████ -->
+    <section class="section" id="security">
+      <div class="section-head">
+        <div class="section-icon">🔴</div>
+        <div>
+          <h2>الأمان</h2>
+          <p>مشكلات تتطلب معالجة فورية</p>
+        </div>
+      </div>
+      <div class="category-block">
+        <div class="findings">
+          <div class="finding" style="--rail-color: var(--critical)">
+            <div class="finding-rail"></div>
+            <div class="finding-body">
+              <div class="finding-head">
+                <h4>مفتاح Supabase مكشوف في ملف عام</h4>
+                <span class="badge badge-critical">حرج</span>
+              </div>
+              <p>الملف <code>assets/supabase-config.js</code> يحتوي على URL وKey مكشوفَين بالكامل في الكود المصدري. رغم أن Supabase يسميه "publishable key"، إلا أن أي شخص يمكنه فحص source code استخدامه مباشرةً للاستعلام عن قاعدة البيانات — خاصةً إذا كانت سياسات RLS غير محكمة.</p>
+              <div class="code-block">window.FLEVO_SUPABASE_KEY = 'sb_publishable_aGQVei7szUD6ChwedNo3hQ_WPSQw9o3';</div>
+              <div class="finding-fix">
+                <strong>التوصية:</strong>
+                تحقق أن Row Level Security (RLS) مفعَّل على جميع الجداول في Supabase. جداول quotation_requests وservices يجب أن تسمح بالكتابة للزوار فقط، وقراءة الكل وحذفه مقصورة على المصادق عليهم. هذا يجعل كشف المفتاح مقبولاً — لكن RLS الصارم هو ضمانة لا خيار.
+              </div>
+            </div>
+          </div>
+
+          <div class="finding" style="--rail-color: var(--critical)">
+            <div class="finding-rail"></div>
+            <div class="finding-body">
+              <div class="finding-head">
+                <h4>غياب Content Security Policy (CSP)</h4>
+                <span class="badge badge-critical">حرج</span>
+              </div>
+              <p>لا يوجد أي header أو meta tag لـ CSP في أي من صفحات الموقع. هذا يعرض الموقع لهجمات XSS والحقن. الموقع يحمل محتوى ديناميكياً من Supabase ويضعه في innerHTML مما يجعل هذا الغياب أكثر خطورة.</p>
+              <div class="finding-fix">
+                <strong>التوصية:</strong>
+                أضف header على مستوى الـ server: Content-Security-Policy: default-src 'self'; script-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com; font-src fonts.gstatic.com; connect-src *.supabase.co
+              </div>
+            </div>
+          </div>
+
+          <div class="finding" style="--rail-color: var(--warning)">
+            <div class="finding-rail"></div>
+            <div class="finding-body">
+              <div class="finding-head">
+                <h4>حماية صفحات الإدارة معتمدة على JavaScript فقط</h4>
+                <span class="badge badge-high">عالي</span>
+              </div>
+              <p>صفحات admin.html وdashboard.html وquotes.html مُقيَّدة بـ <code>data-flevo-protected="true"</code> وكود JS يفتح نافذة تسجيل الدخول. لكن HTML الصفحة كاملاً يُحمَّل في المتصفح قبل التحقق. مشغل JS المعطوب أو مستخدم متقدم يمكنه رؤية هيكل الصفحة.</p>
+              <div class="finding-fix">
+                <strong>التوصية:</strong>
+                الحماية الحقيقية تكون على مستوى Supabase RLS. الكود الحالي كافٍ UX-wise، لكن تأكد أن كل endpoint في Supabase يتحقق من الجلسة وليس فقط الـ frontend.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ████ PERFORMANCE ████ -->
+    <section class="section" id="performance">
+      <div class="section-head">
+        <div class="section-icon">🟠</div>
+        <div>
+          <h2>الأداء</h2>
+          <p>عوامل تبطئ التحميل وتؤثر على Core Web Vitals</p>
+        </div>
+      </div>
+      <div class="findings">
+
+        <div class="finding" style="--rail-color: var(--critical)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>12 ملف CSS محمَّل في كل صفحة</h4>
+              <span class="badge badge-critical">أعلى أولوية</span>
+            </div>
+            <p>الصفحة الرئيسية تحمل 12 طلب CSS منفصل (site.css، final-theme.css، pixel-perfect-theme.css، layout-fixes.css، navigation-fixes.css، quote.css، motion.css، unified-auth.css، flevo-header-v512.css، qr-contact-profile.css، home-projects-carousel.css، testimonials-carousel.css، articles-section.css). كل طلب هو round-trip إضافي يؤخر الـ First Contentful Paint. ملاحظة: هذه الملفات تكشف عن تاريخ التطوير التراكمي — patches فوق patches.</p>
+            <div class="code-block"><!-- index.html يحمل 12 &lt;link&gt; تشير لـ CSS --></div>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              دمج الـ CSS في ملفَّين: critical.css (ما يُرسم فوق الطية) و app.css (الباقي). يمكن استخدام أداة بسيطة مثل esbuild أو Vite أو حتى script cat بسيط في build pipeline.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>Google Fonts تعيق الـ render</h4>
+              <span class="badge badge-high">عالي</span>
+            </div>
+            <p>الصفحة تحمل Cairo وMontserrat من fonts.googleapis.com بشكل blocking. في الشبكات البطيئة أو عند إخفاق CDN، لا يُعرَض أي نص حتى تحمل الخطوط (FOIT). لا يوجد <code>font-display: swap</code>.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أضف display=swap للرابط: fonts.googleapis.com/css2?...&display=swap — أو الأفضل: حمِّل الخطوط self-hosted بـ @font-face مع font-display: swap لضمان عدم الاعتماد على CDN خارجي.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>صورة Hero غير مُحمَّلة مسبقاً (LCP)</h4>
+              <span class="badge badge-high">عالي</span>
+            </div>
+            <p>صورة الـ Hero هي CSS background-image للـ .hero section — المتصفح لا يكتشفها إلا بعد تنزيل CSS وتطبيقه. هذا يؤثر مباشرةً على مؤشر LCP (Largest Contentful Paint) في Google Core Web Vitals، وهو عامل ترتيب في محركات البحث.</p>
+            <div class="code-block">&lt;link rel="preload" as="image" href="assets/images/hero.webp"&gt;</div>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أضف link rel="preload" لصورة الـ Hero في &lt;head&gt;. لكن الأفضل على المدى البعيد: استخدم &lt;img&gt; مع object-fit: cover داخل .hero بدل background-image لتسريع اكتشاف المتصفح لها.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>لا يوجد Service Worker للـ PWA</h4>
+              <span class="badge badge-medium">متوسط</span>
+            </div>
+            <p>manifest.webmanifest موجود لكن لا يوجد service worker. الموقع يُعلن عن نفسه كـ PWA لكن لا يعمل offline ولا يُخزَّن cache. بدون service worker، التثبيت على الجهاز لا يضيف قيمة حقيقية.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أضف service worker بسيط يُخزِّن HTML وCSS وJS الأساسيين (Cache-First للأصول الثابتة، Network-First للـ Supabase calls). مكتبة Workbox تُبسِّط هذا كثيراً.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>لا يوجد cache-busting للأصول</h4>
+              <span class="badge badge-medium">متوسط</span>
+            </div>
+            <p>ملفات CSS وJS تُحمَّل بأسماء ثابتة (site.css، quote.js). عند تحديث الموقع، المتصفحات قد تستخدم نسخ قديمة مخزَّنة حتى انتهاء صلاحية الـ cache. هذا يسبب تجربة مستخدم مربكة بعد التحديثات.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أضف query string بـ version hash عند البناء: site.css?v=1.2.3 أو استخدم content-hash في اسم الملف: site.abc123.css — هذا يتطلب إضافة خطوة build بسيطة.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ████ SEO ████ -->
+    <section class="section" id="seo">
+      <div class="section-head">
+        <div class="section-icon">🔴</div>
+        <div>
+          <h2>تحسين محركات البحث (SEO)</h2>
+          <p>المشكلات التي تحرم الموقع من ظهور أفضل في جوجل</p>
+        </div>
+      </div>
+      <div class="findings">
+
+        <div class="finding" style="--rail-color: var(--critical)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>غياب تام لبيانات Open Graph وTwitter Cards</h4>
+              <span class="badge badge-critical">حرج</span>
+            </div>
+            <p>لا يوجد أي meta tag من نوع og:title أو og:description أو og:image في أي صفحة. عند مشاركة الموقع على LinkedIn أو Facebook أو WhatsApp أو X، تظهر بطاقة مشاركة فارغة بلا صورة ولا وصف — وهو ضعف تسويقي مباشر لشركة تبني تجارب بصرية.</p>
+            <div class="code-block">&lt;meta property="og:title" content="FLEVO Creative Industries | بوثات ومعارض"&gt;
+&lt;meta property="og:description" content="نصمم ونصنع وننفّذ البوثات والمعارض..."&gt;
+&lt;meta property="og:image" content="https://flevo.com/assets/hero-flevo-final.webp"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--critical)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>غياب البيانات الهيكلية (JSON-LD)</h4>
+              <span class="badge badge-critical">حرج</span>
+            </div>
+            <p>لا يوجد أي Schema.org markup. جوجل لا يعرف أن الموقع لـ LocalBusiness — مما يحرمه من ظهور نتيجة غنية (Rich Result) في نتائج البحث مع رقم الهاتف والموقع والتقييم وساعات العمل.</p>
+            <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "FLEVO Creative Industries",
+  "telephone": "+201004478632",
+  "address": { "@type": "PostalAddress", "addressLocality": "6 أكتوبر", "addressCountry": "EG" },
+  "url": "https://www.flevo.com"
+}
+&lt;/script&gt;</div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--critical)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>وصفان meta description متكرران في index.html</h4>
+              <span class="badge badge-critical">خطأ تقني</span>
+            </div>
+            <p>ملف index.html يحتوي على وسمَي meta description (سطر 9 والسطر 31). جوجل يتجاهل الوصفَين ويكتب وصفه الخاص — مما يُضيع جهد صياغة الوصف التسويقي.</p>
+            <div class="code-block"><!-- سطر 9  -->&lt;meta content="فليفو للصناعات الإبداعية..." name="description"/&gt;
+<!-- سطر 31 -->&lt;meta content="FLEVO Creative Industries - ..." name="description"/&gt;</div>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              احتفظ بوصف واحد عربي محسَّن يحتوي على الكلمات المفتاحية الأساسية (بوث معرض، تصنيع، مصر)، وأزل الوصف المكرر.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>H1 يكرر نص الـ eyebrow بالكامل</h4>
+              <span class="badge badge-high">عالي</span>
+            </div>
+            <p>في قسم الـ Hero، نص الـ eyebrow div هو "نحو تجربة تُلهم" وأول كلمات الـ H1 هي أيضاً "نحو تجربة تُلهم". جوجل يرى هذا كـ H1 مكرر مع محتوى قبله، وتضعف قيمة الكلمات المفتاحية في الـ H1.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              غيّر نص الـ eyebrow لشيء مختلف — مثلاً: "شريكك الاستراتيجي في المعارض والفعاليات" — واحتفظ بالـ H1 للكلمات المفتاحية الرئيسية.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>sitemap.xml ناقص ولا يحتوي على صفحات المقالات والمشروعات</h4>
+              <span class="badge badge-high">عالي</span>
+            </div>
+            <p>sitemap.xml يحتوي على 4 URLs فقط (index، projects، gallery، profile). مفقودة: articles.html وصفحات article.html الديناميكية وصفحات project.html — وهي المحتوى الأكثر قيمة لـ SEO لأنها تحتوي على نصوص تفصيلية.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أضف articles.html للـ sitemap يدوياً، ثم اعمل على توليد ديناميكي لـ sitemap يجلب slugs المشروعات والمقالات من Supabase ويُولِّد sitemap.xml تلقائياً عند البناء.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>لا يوجد canonical tags</h4>
+              <span class="badge badge-medium">متوسط</span>
+            </div>
+            <p>بدون &lt;link rel="canonical"&gt; في كل صفحة، جوجل قد يرى نسخ متعددة من نفس الصفحة (http/https، www/non-www، مع/بدون trailing slash) كمحتوى مكرر ويُضعف ترتيبها.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ████ CODE QUALITY ████ -->
+    <section class="section" id="code-quality">
+      <div class="section-head">
+        <div class="section-icon">🔵</div>
+        <div>
+          <h2>جودة الكود والبنية التقنية</h2>
+          <p>الديون التقنية التي تصعّب الصيانة والتطوير مستقبلاً</p>
+        </div>
+      </div>
+      <div class="findings">
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>تراكم ملفات CSS التصحيحية (Patch Files)</h4>
+              <span class="badge badge-high">دَين تقني</span>
+            </div>
+            <p>بدلاً من تعديل الـ CSS الأصلي، تراكمت ملفات تصحيح: <code>layout-fixes.css</code>، <code>navigation-fixes.css</code>، <code>pixel-perfect-theme.css</code>، <code>final-theme.css</code>. هذا يجعل تتبع من أين تأتي قيمة CSS معينة شبه مستحيل، ويُصعِّب أي تعديل مستقبلي.</p>
+            <div class="finding-fix">
+              <strong>الحل المقترح:</strong>
+              خصِّص sprint واحد لإعادة هيكلة CSS: ادمج كل الـ patches في ملف واحد منظم، وأزل التكرار. ابدأ بـ "نظام tokens" بسيط (custom properties) ثم ابنِ Components فوقه.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>تعارض breakpoints بين ملفات CSS</h4>
+              <span class="badge badge-high">تعارض</span>
+            </div>
+            <p>الـ Header CSS (flevo-header-v512.css) يستخدم <code>max-width: 1040px</code> كنقطة كسر للـ mobile. لكن index.html الأصلي وملفات أخرى تستخدم <code>max-width: 980px</code>. هذا يعني وجود منطقة رمادية (980-1040px) تتضارب فيها قواعد CSS.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              اختر نقطة كسر واحدة: 1040px للـ tablet/desktop وطبِّقها في كل الملفات. أضف CSS custom property: <code>--bp-mobile: 1040px</code> كمرجع موحَّد.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>ملفَّان يتنافسان على التحكم في القائمة المتنقلة</h4>
+              <span class="badge badge-high">تعارض</span>
+            </div>
+            <p>كلٌّ من <code>flevo-header-v512.js</code> و<code>navigation-audit.js</code> يحتويان على كود لفتح/إغلاق القائمة المتنقلة. flevo-header-v512.js يتحقق <code>if(!toggle.dataset.flevoBound)</code> كـ failsafe، لكن هذا الأسلوب هش ويخفي وجود تعارض بدلاً من حله.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              اجعل navigation-audit.js المرجع الوحيد للـ mobile menu. احذف كود القائمة من flevo-header-v512.js أو العكس — لا تحتاج لكليهما.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>نظام i18n يمشي الـ DOM كاملاً عند تغيير اللغة</h4>
+              <span class="badge badge-medium">أداء</span>
+            </div>
+            <p>دالة <code>apply()</code> في i18n.js تُنفِّذ <code>document.querySelectorAll('body *:not(script):not(style)')</code> وتمر على كل عقدة نصية في الصفحة. على الصفحات الكبيرة (مثل projects.html مع 350+ مشروع)، هذا يعني توقف واضح عند تغيير اللغة.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              استخدم نظام data attributes: ضع النص العربي في <code>data-ar</code> والإنجليزي في <code>data-en</code> على كل عنصر، وغيِّر textContent فقط للعناصر التي تحمل هذه السمات بدلاً من كل عناصر الصفحة.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>المقالات بيانات ثابتة (JS file) بدلاً من Supabase</h4>
+              <span class="badge badge-medium">تناقض معماري</span>
+            </div>
+            <p>بينما المشروعات والخدمات والاقتباسات والإعدادات تأتي من Supabase ديناميكياً، المقالات لا تزال محددة يدوياً في <code>assets/articles-data.js</code>. هذا يعني أن إضافة مقالة جديدة تتطلب تعديل كود JS وإعادة نشر الملف.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أنشئ جدول <code>articles</code> في Supabase مع الحقول الحالية (title_ar، title_en، excerpt، date، image)، وأضف صفحة إدارة للمقالات مشابهة لصفحة admin.html للمشروعات.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>data/projects.json غير مستخدم</h4>
+              <span class="badge badge-medium">ملف بائت</span>
+            </div>
+            <p>يوجد ملف <code>data/projects.json</code> يحتوي على 6 مشروعات، لكن الكود الحالي يجلب كل البيانات من Supabase. هذا الملف أثر متبقي من نسخة أقدم وقد يُسبِّب ارتباكاً للمطورين في المستقبل.</p>
+            <div class="finding-fix"><strong>الحل:</strong> احذف الملف من المستودع بعد التحقق أنه غير مستخدم في أي مكان.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ████ UX ████ -->
+    <section class="section" id="ux">
+      <div class="section-head">
+        <div class="section-icon">🔵</div>
+        <div>
+          <h2>تجربة المستخدم وإمكانية الوصول</h2>
+          <p>مشكلات تؤثر على المستخدم مباشرةً</p>
+        </div>
+      </div>
+      <div class="findings">
+
+        <div class="finding" style="--rail-color: var(--critical)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>روابط التواصل الاجتماعي فارغة تماماً</h4>
+              <span class="badge badge-critical">مكسور</span>
+            </div>
+            <p>في الـ footer، روابط التواصل الاجتماعي هي <code>&lt;a&gt;f&lt;/a&gt;</code> و<code>&lt;a&gt;◎&lt;/a&gt;</code> و<code>&lt;a&gt;in&lt;/a&gt;</code> و<code>&lt;a&gt;▶&lt;/a&gt;</code> — بدون href على الإطلاق. النقر عليها لا يفعل شيئاً. هذا يسبب ارتباكاً للزوار وهو محرج مع شركة تعتمد على التسويق الرقمي.</p>
+            <div class="finding-fix">
+              <strong>الحل الفوري:</strong>
+              أضف روابط حقيقية لـ Facebook وInstagram وLinkedIn وYouTube، أو أخفِ هذا القسم إذا لم تكن هناك حسابات رسمية حالياً. لا شيء أسوأ من وهم الحضور الرقمي.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--warning)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>زر تشغيل وهمي على صورة ثابتة (Why FLEVO)</h4>
+              <span class="badge badge-high">مضلل</span>
+            </div>
+            <p>قسم "لماذا FLEVO؟" يعرض صورة مشروع مع زر تشغيل دائري (▶ مُضاف بـ CSS ::after pseudo-element). لكن النقر عليه لا يفتح أي فيديو — الصورة ثابتة تماماً. هذا يخلق توقعاً زائفاً لدى الزائر ويُضر بمصداقية الموقع.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              إما أزل pseudo-element الزر (احذف .video-card::after من CSS)، وإما أضف فيديو حقيقي من YouTube أو Supabase Storage يُفتح عند النقر في iframe أو modal.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>manifest.webmanifest: أيقونة واحدة ونوع غير صحيح</h4>
+              <span class="badge badge-medium">PWA</span>
+            </div>
+            <p>الـ manifest يحتوي على أيقونة PNG واحدة (512×512) فقط. الـ PWA يحتاج عدة أحجام (192×192 كحد أدنى) وأيقونة maskable للأجهزة الحديثة. كما أن الأيقونة الحالية ليست وضوح مثالي لشاشات الـ iOS.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أضف أيقونتين على الأقل: 192×192 (icon-192.png) و512×512 (icon-512.png) مع نوع "maskable" للأيقونة الكبيرة.
+            </div>
+          </div>
+        </div>
+
+        <div class="finding" style="--rail-color: var(--info)">
+          <div class="finding-rail"></div>
+          <div class="finding-body">
+            <div class="finding-head">
+              <h4>لا يوجد نموذج تواصل نصي</h4>
+              <span class="badge badge-medium">فجوة</span>
+            </div>
+            <p>قسم التواصل يعتمد كلياً على WhatsApp والاتصال الهاتفي. العملاء الذين يفضلون التواصل عبر البريد الإلكتروني أو النموذج المكتوب (خاصةً العملاء الدوليين) لا يجدون خياراً. نموذج عرض السعر موجود لكنه للعملاء الجاهزين للشراء فقط.</p>
+            <div class="finding-fix">
+              <strong>الحل:</strong>
+              أضف نموذج "اسألنا" بسيط (الاسم، الإيميل، الرسالة) يُحفَظ في Supabase جدول contact_messages — يمكن إعادة استخدام نفس بنية quotation_requests مع تبسيط الحقول.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ████ ROADMAP ████ -->
+    <section class="section" id="roadmap">
+      <div class="section-head">
+        <div class="section-icon">🗺</div>
+        <div>
+          <h2>خطة التحسينات المقترحة</h2>
+          <p>مرتبة حسب الأولوية والتأثير — من الفوري إلى الاستراتيجي</p>
+        </div>
+      </div>
+
+      <div class="phases">
+        <!-- Phase 1 -->
+        <div class="phase" style="--phase-color: var(--critical)">
+          <div class="phase-header">
+            <div class="phase-rail"></div>
+            <div class="phase-head-body">
+              <div class="phase-num">١</div>
+              <h3>الإصلاحات الفورية — أخطاء واضحة ومكسورة</h3>
+              <span class="phase-timeline">أسبوع واحد</span>
+            </div>
+          </div>
+          <ul class="phase-items">
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>روابط التواصل الاجتماعي:</strong> أضف href حقيقي لكل منصة أو أخفِ القسم كاملاً.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>زر التشغيل الوهمي:</strong> أزل CSS ::after من .video-card أو اربطه بفيديو حقيقي.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>وصف meta مكرر:</strong> احتفظ بوصف واحد عربي محسَّن في index.html واحذف الثاني.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>H1 متكرر مع eyebrow:</strong> غيِّر نص الـ eyebrow ليكون مختلفاً عن الـ H1.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>data/projects.json:</strong> احذف الملف من المستودع.</div></li>
+          </ul>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="phase" style="--phase-color: var(--warning)">
+          <div class="phase-header">
+            <div class="phase-rail"></div>
+            <div class="phase-head-body">
+              <div class="phase-num">٢</div>
+              <h3>تحسينات SEO والأداء — تأثير مباشر على الظهور</h3>
+              <span class="phase-timeline">2–3 أسابيع</span>
+            </div>
+          </div>
+          <ul class="phase-items">
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>Open Graph + Twitter Cards:</strong> أضفهم في كل صفحة — أكبر تحسين تسويقي بأقل جهد.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>JSON-LD LocalBusiness:</strong> أضف بيانات هيكلية لتحقيق Rich Results في جوجل.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>Canonical tags:</strong> أضف &lt;link rel="canonical"&gt; في كل صفحة.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>توسيع sitemap:</strong> أضف articles.html، وخطط لـ sitemap ديناميكي للمشروعات والمقالات.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>Google Fonts display=swap:</strong> أضف المعامل للروابط الحالية لإلغاء blocking.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>Preload لصورة Hero:</strong> أضف &lt;link rel="preload"&gt; لتحسين LCP.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>CSP headers:</strong> أضف Content-Security-Policy عبر server config.</div></li>
+          </ul>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase" style="--phase-color: var(--info)">
+          <div class="phase-header">
+            <div class="phase-rail"></div>
+            <div class="phase-head-body">
+              <div class="phase-num">٣</div>
+              <h3>إعادة هيكلة تقنية — جودة الكود والأداء البعيد</h3>
+              <span class="phase-timeline">شهر واحد</span>
+            </div>
+          </div>
+          <ul class="phase-items">
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>دمج CSS:</strong> اجمع الـ 12 ملف في ملفَّين: critical.css وapp.css — أكبر تحسين أداء ممكن.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>توحيد breakpoints:</strong> اختر 1040px كنقطة كسر وحيدة للـ mobile في جميع الملفات.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>توحيد mobile menu:</strong> اجعل ملف JS واحد مسؤولاً عن القائمة المتنقلة.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>تحسين i18n:</strong> استبدل DOM-walk بـ data-ar/data-en attributes.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>Cache-busting:</strong> أضف version hash لأسماء ملفات CSS/JS.</div></li>
+          </ul>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="phase" style="--phase-color: var(--good)">
+          <div class="phase-header">
+            <div class="phase-rail"></div>
+            <div class="phase-head-body">
+              <div class="phase-num">٤</div>
+              <h3>ميزات جديدة — توسيع قدرات الموقع</h3>
+              <span class="phase-timeline">2–3 أشهر</span>
+            </div>
+          </div>
+          <ul class="phase-items">
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>نقل المقالات لـ Supabase:</strong> أنشئ جدول articles وصفحة إدارة لها للتحرر من تعديل الكود لكل مقال.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>Service Worker:</strong> فعِّل التخزين المؤقت لتحقيق PWA حقيقي يعمل offline.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>نموذج تواصل نصي:</strong> أضف نموذجاً بسيطاً للعملاء الذين لا يريدون الاتصال الفوري.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>PWA icons:</strong> أضف أيقونات بأحجام متعددة مع نوع maskable للدعم الكامل.</div></li>
+            <li class="phase-item"><div class="phase-item-dot"></div><div><strong>Build pipeline:</strong> أضف Vite أو esbuild لأتمتة الـ bundle والـ cache-busting في خطوة واحدة.</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ████ SUMMARY ████ -->
+    <section class="section" id="summary">
+      <div class="section-head">
+        <div class="section-icon">📊</div>
+        <div>
+          <h2>ملخص تنفيذي</h2>
+          <p>جدول مرجعي سريع لجميع المشكلات المكتشفة</p>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>المشكلة</th>
+              <th>الفئة</th>
+              <th>التأثير</th>
+              <th>الأولوية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>روابط التواصل الاجتماعي بدون href</td><td>UX</td><td>تجربة مستخدم مكسورة</td><td><span class="badge badge-critical">فوري</span></td></tr>
+            <tr><td>وصفان meta description متكرران</td><td>SEO</td><td>ضعف ترتيب جوجل</td><td><span class="badge badge-critical">فوري</span></td></tr>
+            <tr><td>زر تشغيل وهمي على صورة ثابتة</td><td>UX</td><td>مضلل للمستخدم</td><td><span class="badge badge-critical">فوري</span></td></tr>
+            <tr><td>لا يوجد Open Graph / Twitter Cards</td><td>SEO</td><td>مشاركات اجتماعية فارغة</td><td><span class="badge badge-critical">حرج</span></td></tr>
+            <tr><td>لا يوجد JSON-LD بيانات هيكلية</td><td>SEO</td><td>لا Rich Results في جوجل</td><td><span class="badge badge-critical">حرج</span></td></tr>
+            <tr><td>لا يوجد Content Security Policy</td><td>أمان</td><td>خطر XSS</td><td><span class="badge badge-critical">حرج</span></td></tr>
+            <tr><td>12 ملف CSS محمَّل في كل صفحة</td><td>أداء</td><td>بطء التحميل / FCP</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>Google Fonts blocking render</td><td>أداء</td><td>تأخر عرض النص</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>صورة Hero بدون preload</td><td>أداء</td><td>LCP ضعيف</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>H1 يكرر نص eyebrow</td><td>SEO</td><td>إضعاف الكلمات المفتاحية</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>sitemap.xml ناقص</td><td>SEO</td><td>صفحات غير مفهرسة</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>تراكم CSS patch files</td><td>جودة كود</td><td>صعوبة الصيانة</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>تعارض breakpoints 980px/1040px</td><td>جودة كود</td><td>عرض غير متسق</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>ملفَّان JS يتحكمان في mobile menu</td><td>جودة كود</td><td>تعارض محتمل</td><td><span class="badge badge-high">عالي</span></td></tr>
+            <tr><td>i18n يمشي DOM كاملاً</td><td>أداء</td><td>تأخر تغيير اللغة</td><td><span class="badge badge-medium">متوسط</span></td></tr>
+            <tr><td>المقالات بيانات ثابتة (JS)</td><td>معمارية</td><td>تعقيد إضافة محتوى</td><td><span class="badge badge-medium">متوسط</span></td></tr>
+            <tr><td>لا يوجد Service Worker</td><td>PWA</td><td>لا offline دعم</td><td><span class="badge badge-medium">متوسط</span></td></tr>
+            <tr><td>لا يوجد Canonical tags</td><td>SEO</td><td>محتوى مكرر محتمل</td><td><span class="badge badge-medium">متوسط</span></td></tr>
+            <tr><td>manifest.webmanifest أيقونة واحدة</td><td>PWA</td><td>PWA ناقص</td><td><span class="badge badge-medium">متوسط</span></td></tr>
+            <tr><td>لا يوجد cache-busting</td><td>أداء</td><td>تجربة بعد التحديث</td><td><span class="badge badge-medium">متوسط</span></td></tr>
+            <tr><td>data/projects.json غير مستخدم</td><td>جودة كود</td><td>ارتباك للمطورين</td><td><span class="badge badge-low">منخفض</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    تقرير التحليل التقني · FLEVO Creative Industries · v5.12 · أغسطس 2026
+  </div>
+</footer>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" id="themeToggle" title="تغيير السمة" aria-label="تغيير السمة">
+  ◑
+</button>
+
+<script>
+(function() {
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('flevo-report-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let isDark = stored ? stored === 'dark' : prefersDark;
+
+  function apply() {
+    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    btn.textContent = isDark ? '☀' : '◑';
+  }
+  apply();
+
+  btn.addEventListener('click', function() {
+    isDark = !isDark;
+    localStorage.setItem('flevo-report-theme', isDark ? 'dark' : 'light');
+    apply();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+[
+  {
+    "id": "renault-duster",
+    "titleAr": "رينو داستر",
+    "titleEn": "Renault Duster",
+    "category": "events",
+    "categoryAr": "الفعاليات",
+    "client": "Renault",
+    "location": "القاهرة، مصر",
+    "year": "2026",
+    "area": "450 م²",
+    "duration": "7 أيام",
+    "cover": "assets/images/project-24.jpeg",
+    "descriptionAr": "تنفيذ فعالية إطلاق منتج متكاملة شملت التصنيع المعدني، تجهيز المنصة، الإضاءة، الشاشات، الهوية البصرية وأعمال التركيب بالموقع.",
+    "scope": [
+      "التصميم التنفيذي",
+      "التصنيع المعدني",
+      "النجارة والتشطيبات",
+      "الإضاءة والشاشات",
+      "النقل والتركيب"
+    ],
+    "images": [
+      "assets/images/project-24.jpeg",
+      "assets/images/project-23.jpeg",
+      "assets/images/project-22.jpeg",
+      "assets/images/project-21.jpeg",
+      "assets/images/project-20.jpeg"
+    ]
+  },
+  {
+    "id": "glassrock-build-smart",
+    "titleAr": "جلاس روك - بيلد سمارت",
+    "titleEn": "GlassRock – Build Smart",
+    "category": "booths",
+    "categoryAr": "بوثات المعارض",
+    "client": "GlassRock",
+    "location": "القاهرة، مصر",
+    "year": "2026",
+    "area": "96 م²",
+    "duration": "6 أيام",
+    "cover": "assets/images/project-27.jpeg",
+    "descriptionAr": "بوث معرض حديث بهوية واضحة ومساحات استقبال وعرض منتجات، مع تنفيذ كامل للأعمال المدنية والديكورية والإضاءة.",
+    "scope": [
+      "تصميم ثلاثي الأبعاد",
+      "تصنيع MDF",
+      "أعمال طباعة وهوية",
+      "إضاءة",
+      "تركيب وتسليم"
+    ],
+    "images": [
+      "assets/images/project-27.jpeg",
+      "assets/images/project-28.jpeg",
+      "assets/images/project-26.jpeg",
+      "assets/images/project-25.jpeg"
+    ]
+  },
+  {
+    "id": "cityscape-egypt",
+    "titleAr": "سيتي سكيب مصر",
+    "titleEn": "Cityscape Egypt",
+    "category": "booths",
+    "categoryAr": "بوثات المعارض",
+    "client": "عميل عقاري",
+    "location": "القاهرة، مصر",
+    "year": "2026",
+    "area": "120 م²",
+    "duration": "8 أيام",
+    "cover": "assets/images/project-18.jpeg",
+    "descriptionAr": "جناح معرض عقاري بتصميم فاخر ومساحات اجتماعات واستقبال، تم تنفيذه بخامات عالية الجودة وتفاصيل إضاءة متكاملة.",
+    "scope": [
+      "تصميم البوث",
+      "تصنيع الهيكل",
+      "تشطيبات فاخرة",
+      "أثاث مخصص",
+      "تركيب بالموقع"
+    ],
+    "images": [
+      "assets/images/project-18.jpeg",
+      "assets/images/project-17.jpeg",
+      "assets/images/project-16.jpeg",
+      "assets/images/project-19.jpeg"
+    ]
+  },
+  {
+    "id": "rhythm-night",
+    "titleAr": "إيقاع الليل",
+    "titleEn": "Rhythm Of The Night",
+    "category": "events",
+    "categoryAr": "الفعاليات",
+    "client": "منظم فعاليات",
+    "location": "الجيزة، مصر",
+    "year": "2026",
+    "area": "600 م²",
+    "duration": "10 أيام",
+    "cover": "assets/images/project-15.jpeg",
+    "descriptionAr": "تجهيز فعالية خارجية تضمنت منصة رئيسية وشاشات وإضاءة وعناصر ديكور مخصصة وخدمات تركيب وتشغيل.",
+    "scope": [
+      "مسرح ومنصة",
+      "شاشات LED",
+      "إضاءة",
+      "ديكور خارجي",
+      "تشغيل ودعم"
+    ],
+    "images": [
+      "assets/images/project-15.jpeg",
+      "assets/images/project-14.jpeg",
+      "assets/images/project-13.jpeg",
+      "assets/images/project-12.jpeg"
+    ]
+  },
+  {
+    "id": "custom-fabrication",
+    "titleAr": "تصنيع مخصص",
+    "titleEn": "Custom Fabrication",
+    "category": "fabrication",
+    "categoryAr": "التصنيع",
+    "client": "مشروعات متعددة",
+    "location": "مصنع FLEVO",
+    "year": "2026",
+    "area": "—",
+    "duration": "حسب المشروع",
+    "cover": "assets/images/project-10.jpeg",
+    "descriptionAr": "تصنيع هياكل وعناصر خاصة للمعارض والفعاليات تشمل أعمال المعادن والنجارة والتجميع والتشطيب داخل المصنع.",
+    "scope": [
+      "حدادة ولحام",
+      "نجارة",
+      "دهانات",
+      "تجميع تجريبي",
+      "فحص جودة"
+    ],
+    "images": [
+      "assets/images/project-10.jpeg",
+      "assets/images/project-09.jpeg",
+      "assets/images/project-08.jpeg",
+      "assets/images/project-07.jpeg",
+      "assets/images/project-06.jpeg",
+      "assets/images/project-05.jpeg"
+    ]
+  },
+  {
+    "id": "totalenergies-display",
+    "titleAr": "توتال إنرجيز",
+    "titleEn": "TotalEnergies Display",
+    "category": "special",
+    "categoryAr": "أعمال خاصة",
+    "client": "TotalEnergies",
+    "location": "مصر",
+    "year": "2026",
+    "area": "—",
+    "duration": "5 أيام",
+    "cover": "assets/images/project-04.jpeg",
+    "descriptionAr": "تنفيذ وحدات عرض ولافتات وحروف مجسمة وتجهيزات هوية بصرية مخصصة للعلامة التجارية.",
+    "scope": [
+      "حروف مجسمة",
+      "لافتات مضيئة",
+      "ستاندات عرض",
+      "طباعة",
+      "تركيب"
+    ],
+    "images": [
+      "assets/images/project-04.jpeg",
+      "assets/images/project-03.jpeg",
+      "assets/images/project-02.jpeg",
+      "assets/images/project-01.jpeg"
+    ]
+  }
+]

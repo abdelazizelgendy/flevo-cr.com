@@ -1,0 +1,72 @@
+/* FLEVO v5.1 — smooth page loading and navigation */
+@view-transition { navigation: auto; }
+
+:root{
+  --flevo-motion-fast: 220ms;
+  --flevo-motion-normal: 520ms;
+  --flevo-motion-ease: cubic-bezier(.22,1,.36,1);
+}
+
+html{scroll-behavior:smooth;background:#071b31}
+body{
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .42s ease,transform .58s var(--flevo-motion-ease);
+}
+body.flevo-ready{opacity:1;transform:none}
+body.flevo-leaving{opacity:0;transform:translateY(-6px);pointer-events:none}
+
+/* Elegant initial loader */
+.flevo-loader{
+  position:fixed;inset:0;z-index:99999;display:grid;place-items:center;
+  background:linear-gradient(145deg,#06182b,#0b2b46);
+  transition:opacity .45s ease,visibility .45s ease;
+}
+.flevo-loader.is-hidden{opacity:0;visibility:hidden}
+.flevo-loader__inner{text-align:center;color:#fff}
+.flevo-loader__mark{font:800 42px/1 Montserrat,Cairo,sans-serif;letter-spacing:5px}
+.flevo-loader__mark span{color:#18b6c7}
+.flevo-loader__bar{width:160px;height:3px;margin:20px auto 0;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}
+.flevo-loader__bar:after{content:"";display:block;width:45%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#18b6c7,#5ddce3);animation:flevo-load 1.05s ease-in-out infinite}
+@keyframes flevo-load{0%{transform:translateX(-120%)}100%{transform:translateX(350%)}}
+
+/* Reveal sections progressively instead of all at once */
+.motion-reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .72s ease,transform .82s var(--flevo-motion-ease);
+  transition-delay:var(--motion-delay,0ms)
+}
+.motion-reveal.is-visible{opacity:1;transform:none}
+.motion-reveal[data-motion="left"]{transform:translateX(-28px)}
+.motion-reveal[data-motion="right"]{transform:translateX(28px)}
+.motion-reveal[data-motion="left"].is-visible,
+.motion-reveal[data-motion="right"].is-visible{transform:none}
+
+/* Images load softly */
+img{transition:opacity .45s ease,filter .45s ease,transform .5s var(--flevo-motion-ease)}
+img.flevo-img-loading{opacity:.25;filter:blur(8px)}
+img.flevo-img-loaded{opacity:1;filter:none}
+
+/* Page transition veil */
+.flevo-page-veil{
+  position:fixed;inset:0;z-index:99998;pointer-events:none;
+  background:#071b31;opacity:0;transform:translateY(100%);
+  transition:opacity .28s ease,transform .38s var(--flevo-motion-ease)
+}
+body.flevo-leaving .flevo-page-veil{opacity:1;transform:none}
+
+/* Smoother cards and controls */
+a,button,.card,.project,.project-card,.gallery-item{transition-duration:.28s!important;transition-timing-function:var(--flevo-motion-ease)!important}
+
+::view-transition-old(root){animation:flevo-old .28s ease both}
+::view-transition-new(root){animation:flevo-new .42s var(--flevo-motion-ease) both}
+@keyframes flevo-old{to{opacity:0;transform:scale(.992)}}
+@keyframes flevo-new{from{opacity:0;transform:translateY(8px)}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  body,.motion-reveal{opacity:1!important;transform:none!important}
+  .flevo-loader{display:none!important}
+}

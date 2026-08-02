@@ -1,0 +1,24 @@
+
+/* FLEVO quotation modal v4.6 */
+.quote-modal{position:fixed;inset:0;z-index:9999;display:none;place-items:center;padding:24px;background:rgba(3,15,28,.82);backdrop-filter:blur(5px)}
+.quote-modal.open{display:grid}
+.quote-card{position:relative;width:min(820px,calc(100vw - 32px));max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:22px;box-shadow:0 35px 100px rgba(0,0,0,.38);padding:32px;color:#132033}
+.quote-close{position:absolute;inset-inline-end:18px;top:16px;width:40px;height:40px;border:0;border-radius:50%;background:#edf3f7;color:#122033;font-size:27px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.quote-close:hover{background:#dfe9ef}
+.quote-head{padding-inline-end:50px;border-bottom:1px solid #e5edf3;padding-bottom:18px}
+.quote-head span{display:inline-block;color:#0a9cac;font-size:12px;font-weight:800;letter-spacing:.5px}
+.quote-head h2{margin:6px 0 7px;font-size:30px;line-height:1.35;color:#071b31}
+.quote-head p{margin:0;color:#667487;line-height:1.8;font-size:14px}
+.quote-form{margin-top:22px}
+.quote-form .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.quote-form label{display:block;font-size:13px;font-weight:700;color:#26384b}
+.quote-form input,.quote-form select,.quote-form textarea{display:block;width:100%;margin-top:7px;padding:12px 13px;border:1px solid #d7e1e9;border-radius:10px;background:#fff;color:#132033;font:inherit;outline:none;min-width:0}
+.quote-form textarea{resize:vertical;min-height:115px}
+.quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{border-color:#18b6c7;box-shadow:0 0 0 3px rgba(24,182,199,.13)}
+.quote-form .full{grid-column:1/-1}
+.quote-submit{margin-top:18px;min-width:190px;border:0;border-radius:10px;padding:13px 22px;background:linear-gradient(135deg,#18b6c7,#138fac);color:white;font:inherit;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(24,182,199,.26)}
+.quote-submit:disabled{opacity:.65;cursor:wait}
+.form-status{min-height:24px;margin-top:12px;font-size:13px;font-weight:700}
+.form-status.success{color:#16803b}.form-status.error{color:#c62828;white-space:normal}
+html[dir="ltr"] .quote-card{text-align:left}html[dir="rtl"] .quote-card{text-align:right}
+@media(max-width:650px){.quote-modal{padding:10px}.quote-card{width:100%;max-height:calc(100vh - 20px);padding:24px 18px;border-radius:16px}.quote-form .form-grid{grid-template-columns:1fr}.quote-form .full{grid-column:auto}.quote-head h2{font-size:24px}.quote-submit{width:100%}}

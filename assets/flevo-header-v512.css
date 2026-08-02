@@ -1,0 +1,272 @@
+/* FLEVO v5.12 — proposal 1 unified public header */
+:root{
+  --fh-navy:#06182b;
+  --fh-navy-2:#0a2238;
+  --fh-teal:#12b8bc;
+  --fh-teal-bright:#32d2d4;
+  --fh-white:#f6f9fb;
+  --fh-line:rgba(188,213,226,.20);
+}
+
+.flevo-main-header{
+  position:fixed!important;
+  inset:0 0 auto 0!important;
+  z-index:1400!important;
+  height:94px;
+  padding:12px 0;
+  background:linear-gradient(180deg,rgba(3,16,29,.96),rgba(3,16,29,.86));
+  border-bottom:1px solid rgba(18,184,188,.38);
+  box-shadow:0 12px 40px rgba(0,8,18,.18);
+  -webkit-backdrop-filter:blur(18px) saturate(125%);
+  backdrop-filter:blur(18px) saturate(125%);
+  transition:height .25s ease,background .25s ease,box-shadow .25s ease;
+}
+.flevo-main-header.is-scrolled{
+  height:82px;
+  background:rgba(3,16,29,.96);
+  box-shadow:0 14px 42px rgba(0,8,18,.34);
+}
+.flevo-header-shell{
+  direction:ltr;
+  width:min(1480px,calc(100% - 44px));
+  height:100%;
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(245px,310px) minmax(0,1fr) auto;
+  align-items:center;
+  gap:28px;
+  color:var(--fh-white);
+}
+.flevo-header-brand{
+  display:flex!important;
+  align-items:center;
+  justify-content:flex-start;
+  height:62px;
+  min-width:0;
+  padding-inline-end:26px;
+  border-inline-end:1px solid var(--fh-line);
+}
+.flevo-header-brand img{
+  display:block;
+  width:min(100%,286px);
+  max-height:64px;
+  object-fit:contain;
+  object-position:left center;
+}
+.flevo-header-nav{
+  direction:rtl;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(13px,1.35vw,25px);
+  white-space:nowrap;
+}
+.flevo-header-nav a{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:5px 1px;
+  color:rgba(246,249,251,.86)!important;
+  font-family:Cairo,Arial,sans-serif;
+  font-size:clamp(11.5px,.77vw,14px)!important;
+  font-weight:700;
+  line-height:1;
+  opacity:1!important;
+  transition:color .2s ease,transform .2s ease;
+}
+.flevo-header-nav a:hover,
+.flevo-header-nav a.active{
+  color:var(--fh-teal-bright)!important;
+  transform:translateY(-1px);
+}
+.flevo-header-nav a::after{
+  content:""!important;
+  position:absolute!important;
+  right:0!important;
+  left:0!important;
+  bottom:0!important;
+  height:2px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,transparent,var(--fh-teal-bright),transparent)!important;
+  transform:scaleX(0)!important;
+  transform-origin:center!important;
+  transition:transform .22s ease!important;
+  display:block!important;
+}
+.flevo-header-nav a:hover::after,
+.flevo-header-nav a.active::after{transform:scaleX(1)!important}
+.flevo-header-actions{
+  direction:ltr;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+}
+.flevo-header-quote{
+  direction:rtl;
+  min-height:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:0 20px;
+  border:1px solid rgba(18,184,188,.82);
+  border-radius:10px;
+  color:#fff!important;
+  background:rgba(18,184,188,.06);
+  font-family:Cairo,Arial,sans-serif;
+  font-size:13px;
+  font-weight:800;
+  white-space:nowrap;
+  transition:.22s ease;
+}
+.flevo-header-quote:hover{
+  background:linear-gradient(135deg,var(--fh-teal),#0b879e);
+  border-color:transparent;
+  box-shadow:0 10px 28px rgba(18,184,188,.24);
+  transform:translateY(-1px);
+}
+.flevo-header-quote svg{width:18px;height:18px;stroke:currentColor}
+.flevo-header-languages{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  padding:3px;
+  border:1px solid rgba(18,184,188,.36);
+  border-radius:9px;
+  background:rgba(255,255,255,.025);
+}
+.flevo-header-languages button{
+  min-width:38px;
+  height:38px;
+  border:0;
+  border-radius:7px;
+  color:rgba(255,255,255,.68);
+  background:transparent;
+  font:700 12px/1 Montserrat,Cairo,sans-serif;
+  cursor:pointer;
+}
+.flevo-header-languages button.active{
+  color:#041724;
+  background:linear-gradient(135deg,var(--fh-teal-bright),var(--fh-teal));
+  box-shadow:0 5px 15px rgba(18,184,188,.22);
+}
+.flevo-header-search,
+.flevo-header-toggle{
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  display:grid!important;
+  place-items:center;
+  border:1px solid rgba(190,216,228,.27)!important;
+  border-radius:50%!important;
+  color:#fff!important;
+  background:rgba(255,255,255,.025)!important;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.flevo-header-search:hover,.flevo-header-toggle:hover,
+.flevo-header-search[aria-expanded="true"]{
+  color:var(--fh-teal-bright)!important;
+  border-color:rgba(18,184,188,.72)!important;
+  background:rgba(18,184,188,.09)!important;
+}
+.flevo-header-search svg{width:20px;height:20px;stroke:currentColor}
+.flevo-header-toggle{display:none!important;border-radius:10px!important;font-size:25px!important}
+.flevo-header-toggle span{line-height:1}
+.flevo-search-panel{
+  position:fixed;
+  top:100px;
+  left:50%;
+  z-index:1420;
+  width:min(650px,calc(100% - 32px));
+  padding:16px;
+  border:1px solid rgba(18,184,188,.35);
+  border-radius:16px;
+  background:rgba(4,22,38,.985);
+  box-shadow:0 24px 75px rgba(0,5,12,.52);
+  transform:translate(-50%,-10px);
+  opacity:0;
+  visibility:hidden;
+  transition:.2s ease;
+}
+.flevo-search-panel.open{transform:translate(-50%,0);opacity:1;visibility:visible}
+.flevo-search-input{
+  width:100%;
+  height:50px;
+  padding:0 16px;
+  border:1px solid rgba(190,216,228,.22);
+  border-radius:11px;
+  outline:0;
+  color:#fff;
+  background:#081d30;
+  font:600 14px Cairo,Arial,sans-serif;
+}
+.flevo-search-input:focus{border-color:var(--fh-teal);box-shadow:0 0 0 4px rgba(18,184,188,.10)}
+.flevo-search-links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.flevo-search-links a{padding:11px 12px;border-radius:9px;color:#dceaf0;background:rgba(255,255,255,.035);font:700 12px Cairo,Arial,sans-serif}
+.flevo-search-links a:hover,.flevo-search-links a[hidden]{background:rgba(18,184,188,.12);color:var(--fh-teal-bright)}
+.flevo-search-links a[hidden]{display:none}
+
+/* Preserve content below the fixed header across public pages. */
+body.flevo-public-page{padding-top:94px!important}
+body.flevo-public-page .hero{padding-top:0!important}
+body.flevo-public-page .hero-small{margin-top:0!important}
+body.flevo-public-page .articles-page-hero{padding-top:68px!important}
+body.flevo-public-page .profile-neon-hero{margin-top:0!important}
+html{scroll-padding-top:112px!important}
+
+@media(max-width:1240px){
+  .flevo-header-shell{grid-template-columns:225px minmax(0,1fr) auto;gap:18px}
+  .flevo-header-brand{padding-inline-end:18px}
+  .flevo-header-nav{gap:13px}
+  .flevo-header-nav a{font-size:11.5px!important}
+  .flevo-header-quote{padding:0 14px;font-size:12px}
+}
+@media(max-width:1040px){
+  .flevo-main-header,.flevo-main-header.is-scrolled{height:82px;padding:9px 0}
+  .flevo-header-shell{width:min(100% - 24px,980px);grid-template-columns:minmax(185px,1fr) auto;gap:14px}
+  .flevo-header-brand{height:58px;border-inline-end:0;padding-inline-end:0}
+  .flevo-header-brand img{width:220px;max-height:58px}
+  .flevo-header-actions{grid-column:2}
+  .flevo-header-nav{
+    display:none!important;
+    position:fixed!important;
+    top:90px!important;
+    right:12px!important;
+    left:12px!important;
+    width:auto!important;
+    max-height:calc(100dvh - 106px)!important;
+    overflow:auto!important;
+    padding:15px!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:4px!important;
+    border:1px solid rgba(18,184,188,.36)!important;
+    border-radius:17px!important;
+    background:linear-gradient(160deg,rgba(7,29,47,.99),rgba(2,15,28,.995))!important;
+    box-shadow:0 28px 75px rgba(0,5,12,.55)!important;
+  }
+  .flevo-header-nav.open{display:flex!important}
+  .flevo-header-nav a{width:100%;min-height:48px;padding:11px 14px!important;border-radius:10px;font-size:14px!important}
+  .flevo-header-nav a:hover,.flevo-header-nav a.active{background:rgba(18,184,188,.12)}
+  .flevo-header-nav a::after{display:none!important}
+  .flevo-header-toggle{display:grid!important}
+  body.flevo-public-page{padding-top:82px!important}
+  .flevo-search-panel{top:88px}
+}
+@media(max-width:680px){
+  .flevo-header-shell{width:calc(100% - 18px);grid-template-columns:minmax(145px,1fr) auto;gap:8px}
+  .flevo-header-brand img{width:190px}
+  .flevo-header-quote{display:none}
+  .flevo-header-languages button{min-width:34px;width:34px;height:36px;font-size:11px}
+  .flevo-header-search,.flevo-header-toggle{width:40px;height:40px}
+  .flevo-header-actions{gap:6px}
+  .flevo-search-links{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:430px){
+  .flevo-header-brand img{width:160px}
+  .flevo-header-languages{display:none}
+}
